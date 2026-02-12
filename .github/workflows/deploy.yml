@@ -17,12 +17,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Build Tailwind (CI Safe)
+        run: npx --yes tailwindcss@3.4.0 -i ./src/input.css -o ./assets/css/main.css --minify
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Tailwind
-        run: npx tailwindcss -i ./src/input.css -o ./assets/css/main.css --minify
 
 
       - name: Deploy via FTP
