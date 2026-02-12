@@ -10,22 +10,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout repo
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Setup Node
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      # 3️⃣ Build Tailwind safely (no permission issues)
       - name: Build Tailwind (CI Safe)
         run: npx --yes tailwindcss@3.4.0 -i ./src/input.css -o ./assets/css/main.css --minify
 
-
-
+      # 4️⃣ Deploy via FTP (CORRECT PATH FIXED)
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: public_html/wp-content/themes/technova/
+          server-dir: /public_html/wp-content/themes/
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.github/**
+            node_modules/**
+            src/**
+            tailwind.config.js
+            package.json
+            package-lock.json
