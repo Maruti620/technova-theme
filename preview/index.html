@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechNova Preview</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <div id="progressBar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-indigo-600 to-cyan-500 z-50"></div>
+
+  <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-700">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+        TechNova
+      </a>
+      <nav id="primaryNav" class="hidden absolute top-full left-0 w-full bg-white/95 dark:bg-slate-900/95 p-4 md:p-0 md:static md:w-auto md:bg-transparent md:dark:bg-transparent md:flex">
+        <ul class="flex flex-col md:flex-row gap-4 md:gap-8 font-medium items-center">
+          <li><a class="hover:text-indigo-600" href="#home">Home</a></li>
+          <li><a class="hover:text-indigo-600" href="#single">Single</a></li>
+          <li><a class="hover:text-indigo-600" href="#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="darkToggle" class="text-xl" aria-label="Toggle dark mode">☾</button>
+        <button id="mobileMenuBtn" class="md:hidden text-2xl" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12 space-y-16">
+    <!-- Posts grid -->
+    <section id="home">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-3xl font-bold">Latest Posts</h2>
+        <p class="text-sm text-slate-500">Static preview · no WordPress required</p>
+      </div>
+      <div id="post-container" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Cards injected via script -->
+      </div>
+      <div class="mt-8 text-center">
+        <button id="loadmore" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition">
+          Load more
+          <span aria-hidden="true">→</span>
+        </button>
+        <p id="loadmoreStatus" class="mt-2 text-sm text-slate-500"></p>
+      </div>
+    </section>
+
+    <!-- Single post preview -->
+    <section id="single" class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Single Post Preview</h2>
+      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm p-6 md:p-10">
+        <p class="text-sm text-slate-500 mb-4">8 min read · Feb 12, 2026</p>
+        <h1 class="text-4xl font-bold mb-4">Building a Smarter Tech Blog Theme with Tailwind</h1>
+        <div id="toc" class="mb-10 p-6 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
+        <div class="prose dark:prose-invert max-w-none space-y-6">
+          <p>Welcome to the static preview. This page mimics the WordPress single template while running purely from static files. Tailwind utilities, dark mode, and the scroll progress bar all work as they would on the live theme.</p>
+          <h2>Performance-first structure</h2>
+          <p>The layout keeps content width comfortable (max-w-4xl) and uses generous white space. The sticky header and scroll progress bar stay visible to reinforce navigation.</p>
+          <h2>Readable typography</h2>
+          <p>The typography plugin powers balanced line lengths and vertical rhythm. Dark mode flips text and background while preserving contrast.</p>
+          <h2>Interactive touches</h2>
+          <p>Mobile navigation, dark mode, and the table of contents are wired up with lightweight JavaScript. The “Load more” control below simulates fetching more posts without calling WordPress.</p>
+        </div>
+        <div class="mt-10">
+          <h3 class="text-2xl font-bold">Related Reading</h3>
+          <ul class="mt-4 space-y-2 text-indigo-600">
+            <li><a class="hover:underline" href="#">Designing navigation that scales</a></li>
+            <li><a class="hover:underline" href="#">Dark mode theming pitfalls</a></li>
+            <li><a class="hover:underline" href="#">Tailwind performance tips</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer id="about" class="border-t border-slate-200 dark:border-slate-800 py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-slate-500">
+      <span>TechNova Preview - Static mock</span>
+      <span>CSS: ../assets/css/main.css - JS: reused from theme</span>
+    </div>
+  </footer>
+
+  <!-- Guard WP-dependent globals -->
+  <script>
+    window.technova_ajax = { ajaxurl: '#', nonce: '', max_pages: 3 };
+  </script>
+
+  <!-- Reuse theme scripts -->
+  <script src="../assets/js/dark-mode.js"></script>
+  <script src="../assets/js/mobile-menu.js"></script>
+  <script src="../assets/js/progress.js"></script>
+  <script src="../assets/js/toc.js"></script>
+
+  <!-- Mock load more + sample content -->
+  <script>
+    const samplePosts = [
+      { title: 'Smarter developer onboarding', excerpt: 'Use opinionated defaults and helpful lint rules to speed up first commits.', date: 'Jan 20, 2026', tags: ['DX', 'Productivity'] },
+      { title: 'Edge caching for WP themes', excerpt: 'Static assets, CDN rules, and HTML edge logic to cut TTFB.', date: 'Jan 15, 2026', tags: ['Performance'] },
+      { title: 'Accessible dark mode patterns', excerpt: 'Color contrast, prefers-color-scheme, and focus states that work.', date: 'Jan 10, 2026', tags: ['A11y', 'Design'] },
+      { title: 'Optimizing TOC generation', excerpt: 'When to precompute anchors vs. client-side parsing in long reads.', date: 'Dec 28, 2025', tags: ['Content'] },
+      { title: 'Micro-interactions without bloat', excerpt: 'Leverage CSS transitions and tiny helpers instead of big frameworks.', date: 'Dec 12, 2025', tags: ['Frontend'] },
+      { title: 'Measuring reader engagement', excerpt: 'Scroll depth, time on page, and lightweight analytics choices.', date: 'Dec 1, 2025', tags: ['Analytics'] }
+    ];
+
+    const postContainer = document.getElementById('post-container');
+    const statusEl = document.getElementById('loadmoreStatus');
+    let cursor = 0;
+    const pageSize = 3;
+
+    const makeTag = (text) => {
+      const span = document.createElement('span');
+      span.className = 'px-2 py-1 text-xs rounded-full bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-100';
+      span.textContent = text;
+      return span;
+    };
+
+    const renderCard = (post) => {
+      const card = document.createElement('article');
+      card.className = 'group border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition';
+      card.innerHTML = `
+        <div class="text-sm text-slate-500 flex items-center gap-2 mb-3">
+          <span>${post.date}</span>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 group-hover:text-indigo-600 transition">${post.title}</h3>
+        <p class="text-slate-600 dark:text-slate-300 mb-4">${post.excerpt}</p>
+        <div class="flex flex-wrap gap-2"></div>
+      `;
+      const tagRow = card.querySelector('div.flex');
+      post.tags?.forEach(t => tagRow.appendChild(makeTag(t)));
+      return card;
+    };
+
+    const renderNext = () => {
+      const slice = samplePosts.slice(cursor, cursor + pageSize);
+      slice.forEach(p => postContainer.appendChild(renderCard(p)));
+      cursor += slice.length;
+      if (cursor >= samplePosts.length) {
+        document.getElementById('loadmore').disabled = true;
+        document.getElementById('loadmore').classList.add('opacity-50', 'cursor-not-allowed');
+        statusEl.textContent = 'All mock posts loaded.';
+      } else {
+        statusEl.textContent = `${samplePosts.length - cursor} posts remaining in mock data.`;
+      }
+    };
+
+    renderNext();
+    document.getElementById('loadmore').addEventListener('click', renderNext);
+  </script>
+</body>
+</html>

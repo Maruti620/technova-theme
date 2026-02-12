@@ -1,0 +1,15 @@
+{
+    "name": "technova",
+    "version": "2.0.0",
+    "description": "TechNova Bold Tailwind WordPress Theme",
+    "scripts": {
+        "dev": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --watch",
+        "build": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --minify"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.19",
+        "autoprefixer": "^10.4.24",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^3.4.19"
+    }
+}
